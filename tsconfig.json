@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "mat-datepicker-time-header": [
+        "dist/mat-datepicker-time-header/mat-datepicker-time-header",
+        "dist/mat-datepicker-time-header"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

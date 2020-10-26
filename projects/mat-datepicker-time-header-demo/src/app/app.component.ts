@@ -1,32 +1,42 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatDatepickerTimeHeaderComponent } from '../../../mat-datepicker-time-header/src/lib/mat-datepicker-time-header.component';
 
 @Component({
   selector: 'app-root',
   template: `
     <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <span style="display: block">{{ title }} app is running!</span>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
+    <form [formGroup]="form1">
+  <mat-form-field appearance="fill">
+    <mat-label>Custom calendar header</mat-label>
+    <input formControlName="date" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [calendarHeaderComponent]="timeHeader"></mat-datepicker>
+  </mat-form-field>
+</form>
+
+<form [formGroup]="form2">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker2">
+      <input [formControl]="form2.get('date.start')" matStartDate placeholder="Start date">
+      <input [formControl]="form2.get('date.end')" matEndDate placeholder="End date">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker2 [calendarHeaderComponent]="timeHeader"></mat-date-range-picker>
+  </mat-form-field>
+</form>
+
     
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'mat-datepicker-time-header-demo';
+  form1 = new FormGroup({ date: new FormControl(), time: new FormControl() })
+  form2 = new FormGroup({ date: new FormGroup({ start: new FormControl(), end: new FormControl() }), time: new FormGroup({ start: new FormControl(), end: new FormControl() }) })
+  constructor() {
+    this.form1.valueChanges.subscribe(console.log)
+    this.form2.valueChanges.subscribe(console.log)
+  }
+  timeHeader = MatDatepickerTimeHeaderComponent
 }

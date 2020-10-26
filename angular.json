@@ -105,6 +105,46 @@
           }
         }
       }
+    },
+    "mat-datepicker-time-header": {
+      "projectType": "library",
+      "root": "projects/mat-datepicker-time-header",
+      "sourceRoot": "projects/mat-datepicker-time-header/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/mat-datepicker-time-header/tsconfig.lib.json",
+            "project": "projects/mat-datepicker-time-header/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mat-datepicker-time-header/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mat-datepicker-time-header/src/test.ts",
+            "tsConfig": "projects/mat-datepicker-time-header/tsconfig.spec.json",
+            "karmaConfig": "projects/mat-datepicker-time-header/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mat-datepicker-time-header/tsconfig.lib.json",
+              "projects/mat-datepicker-time-header/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "mat-datepicker-time-header-demo"
