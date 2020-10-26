@@ -1,24 +1,66 @@
 # MatDatepickerTimeHeader
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+### Check out the [Demo](https://stackblitz.com/edit/ngx-file-drag-drop)
 
-## Code scaffolding
+### Install
 
-Run `ng generate component component-name --project mat-datepicker-time-header` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mat-datepicker-time-header`.
-> Note: Don't forget to add `--project mat-datepicker-time-header` or else it will be added to the default project in your `angular.json` file. 
+```
+npm i ngx-file-drag-drop
+```
 
-## Build
+### Usage
 
-Run `ng build mat-datepicker-time-header` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Add the module
 
-## Publishing
+```ts
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerTimeHeaderModule } from 'mat-datepicker-time-header';
 
-After building your library with `ng build mat-datepicker-time-header`, go to the dist folder `cd dist/mat-datepicker-time-header` and run `npm publish`.
+@NgModule({
+  imports: [
+    MatNativeDateModule,
+    MatDatepickerModule,
+    // the module for this lib
+    MatDatepickerTimeHeaderModule
+  ]
+})
+```
+in `component.ts`
+#### Create a `formGroup` with a `time` control
 
-## Running unit tests
+```ts
+form = new FormGroup({ date: new FormControl(), time: new FormControl() });
+```
 
-Run `ng test mat-datepicker-time-header` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Create a referance to the MatDatepickerTimeHeaderComponent
 
-## Further help
+```ts
+timeHeader = MatDatepickerTimeHeaderComponent;
+```
+in `component.html`
+#### Create a form and place the picker into it
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```html
+<form [formGroup]="formGroup">
+  <mat-form-field appearance="fill">
+    <mat-label>Custom calendar header</mat-label>
+    <input formControlName="date" matInput [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
+```
+
+#### Add the custom heaser to the datepicker
+
+```html
+<mat-datepicker #picker [calendarHeaderComponent]="timeHeader"></mat-datepicker>
+```
+## Todo
+
+Add option to configure time control name.
+
+## Current Limitations
+
+No support yet for date range (no place in the header).
