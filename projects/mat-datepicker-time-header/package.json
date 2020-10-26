@@ -16,13 +16,14 @@
   "keywords": [
     "angular",
     "material",
-    "file",
+    "datepicker",
     "input",
     "component",
-    "file-picker",
-    "drag-and-drop",
-    "file-drop",
-    "ngx-file-drag-drop"
+    "timepicker",
+    "date",
+    "time",
+    "datetimepicker",
+    "mat-datepicker-time-header"
   ],
   "bugs": {
     "url": "https://github.com/telebroad/mat-datepicker-time-header/issues"
