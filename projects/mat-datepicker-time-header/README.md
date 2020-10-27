@@ -27,7 +27,7 @@ import { MatDatepickerTimeHeaderModule } from 'mat-datepicker-time-header';
 })
 
 ```
-**In order for the input to work, you must add a control with the name `time` to a `formGroup`, and add the formGroup on one of the parents of the datepicker. Otherwise it will just throw an error. The cotrol name can optionaly [ be configured](#config "Optional control name configuration").**
+**In order for the input to work, you must add a control with the name `time` to a `formGroup`, and add the formGroup on one of the parents of the datepicker. Otherwise it will just throw an error. The cotrol name can optionaly [ be configured](#optional-control-name-configuration).**
 
 in `component.ts`
 
@@ -39,7 +39,8 @@ form = new FormGroup({ date: new FormControl(), time: new FormControl() });
 
 #### Create a referance to the MatDatepickerTimeHeaderComponent
 
-```ts
+```ts 
+import { MatDatepickerTimeHeaderComponent } from 'mat-datepicker-time-header'
 timeHeader = MatDatepickerTimeHeaderComponent;
 ```
 
@@ -64,7 +65,7 @@ in `component.html`
 <mat-datepicker #picker [calendarHeaderComponent]="timeHeader"></mat-datepicker>
 ```
 
-## <p id="config">Optional control name configuration</p>
+## Optional control name configuration
 
 By default, the time input will search for a parent formGroup and attach itself to the control with the name `time`,
 the control name can optionaly be changed by providing the control name.
