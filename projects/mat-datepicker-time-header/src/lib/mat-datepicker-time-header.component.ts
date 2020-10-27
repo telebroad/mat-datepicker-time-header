@@ -18,17 +18,21 @@ export class MatDatepickerTimeHeaderComponent<D, S> {
 
   constructor(
     parentFormDir: FormGroupDirective,
-    @Optional() @Inject(MAT_DATEPICKER_TIME_CONTROL_NAME) @Optional() public timeInputControlName: string = 'time',
+    @Optional() @Inject(MAT_DATEPICKER_TIME_CONTROL_NAME) @Optional() timeInputControlName: string,
     matDatepickerContent: MatDatepickerContent<S>,
     @Inject(forwardRef(() => MatCalendar)) public calendar: MatCalendar<D>,
     changeDetectorRef: ChangeDetectorRef) {
 
+    this.timeInputControlName = timeInputControlName || 'time';
+
+    console.log('input name', this.timeInputControlName);
+
     if (this.isRange) {
       throw ('timepicker header is not yet supported for range picker')
     }
-      // by default, after selecting a date, the picker closes. We are verriding it to allow time selection
+    // by default, after selecting a date, the picker closes. We are verriding it to allow time selection
 
-      ;(matDatepickerContent as any).disableAutoClose = true;
+    ; (matDatepickerContent as any).disableAutoClose = true;
     MatDatepickerContent.prototype._handleUserSelection = _handleUserSelection
     this.parentForm = parentFormDir.form;
     this.calendar.stateChanges.subscribe(() => changeDetectorRef.markForCheck());
@@ -36,7 +40,7 @@ export class MatDatepickerTimeHeaderComponent<D, S> {
 
   }
 
-
+  timeInputControlName: string;
 
   get isRange(): boolean {
     return this.calendar.selected instanceof DateRange
