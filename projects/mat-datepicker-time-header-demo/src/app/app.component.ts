@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { MatDatepickerTimeHeaderComponent } from '../../../mat-datepicker-time-header/src/lib/mat-datepicker-time-header.component';
 
 @Component({
@@ -29,14 +29,35 @@ import { MatDatepickerTimeHeaderComponent } from '../../../mat-datepicker-time-h
 
     
   `,
-  styles: []
+  styles: [],
 })
 export class AppComponent {
-  form1 = new FormGroup({ date: new FormControl(), time: new FormControl() })
-  form2 = new FormGroup({ date: new FormGroup({ start: new FormControl(), end: new FormControl() }), time: new FormGroup({ start: new FormControl(), end: new FormControl() }) })
+
+  form1 = new FormGroup({
+    date: new FormControl(),
+    time: new FormControl()
+  });
+
+  form2 = new FormGroup({
+    date: new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    }),
+    time: new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    })
+  });
+
   constructor() {
     this.form1.valueChanges.subscribe(console.log)
     this.form2.valueChanges.subscribe(console.log)
+     //setInterval((ctrl: AbstractControl) => ctrl.setValue(ctrl.value === '09:00' ? '13:00' : '09:00'), 1000, this.form1.get('time'))
+  }
+
+  get changeDetection(){
+    console.log("Checking the view");
+    return true;
   }
   timeHeader = MatDatepickerTimeHeaderComponent
 }
