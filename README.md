@@ -27,7 +27,7 @@ import { MatDatepickerTimeHeaderModule } from 'mat-datepicker-time-header';
 })
 
 ```
-**In order for the input to work, you must add a `time` input to a `formGroup`, and add the form froup on one of the parents of the datepicker. Otherwise it will just throw an error. The cotrol name can optionaly [ be configured](#config "Optional control name configuration").**
+**In order for the input to work, you must add a control with the name `time` to a `formGroup`, and add the formGroup on one of the parents of the datepicker. Otherwise it will just throw an error. The cotrol name can optionaly [ be configured](#config "Optional control name configuration").**
 
 in `component.ts`
 
