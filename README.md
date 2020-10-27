@@ -1,6 +1,6 @@
 # MatDatepickerTimeHeader
 
-<!-- ### Check out the [Demo](https://stackblitz.com/edit/mat-datepicker-time-header) -->
+### Check out the [Demo](https://stackblitz.com/edit/mat-datepicker-time-header)
 
 ### Install
 
