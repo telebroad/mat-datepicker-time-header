@@ -22,7 +22,7 @@ export function _handleUserSelection<D, S>(this: any, event: MatCalendarUserEven
         this._model.add(value);
     }
 
-    if ((!this._model || this._model.isComplete()) && !this.disableAutoClose) {
-        this.datepicker.close();
-    }
+    // if ((!this._model || this._model.isComplete()) && !this.disableAutoClose) {
+    //     this.datepicker.close();
+    // }
 }
