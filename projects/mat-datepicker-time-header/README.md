@@ -49,7 +49,7 @@ in `component.html`
 #### Create a form and place the picker into it
 
 ```html
-<form [formGroup]="formGroup">
+<form [formGroup]="form">
   <mat-form-field appearance="fill">
     <mat-label>Custom calendar header</mat-label>
     <input formControlName="date" matInput [matDatepicker]="picker" />
