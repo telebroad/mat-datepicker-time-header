@@ -23,10 +23,15 @@ import { MatDatepickerTimeHeaderModule } from 'mat-datepicker-time-header';
     MatDatepickerModule,
     // the module for this lib
     MatDatepickerTimeHeaderModule
+  ],
+  entryComponents: [
+    // if you get an error, you may need to add the component to the entryComponents array
+    MatDatepickerTimeHeaderComponent
   ]
 })
 
 ```
+
 **In order for the input to work, you must add a control with the name `time` to a `formGroup`, and add the formGroup on one of the parents of the datepicker. Otherwise it will just throw an error. The cotrol name can optionaly [ be configured](#optional-control-name-configuration).**
 
 in `component.ts`
@@ -39,8 +44,8 @@ form = new FormGroup({ date: new FormControl(), time: new FormControl() });
 
 #### Create a referance to the MatDatepickerTimeHeaderComponent
 
-```ts 
-import { MatDatepickerTimeHeaderComponent } from 'mat-datepicker-time-header'
+```ts
+import { MatDatepickerTimeHeaderComponent } from "mat-datepicker-time-header";
 timeHeader = MatDatepickerTimeHeaderComponent;
 ```
 
@@ -74,14 +79,14 @@ the control name can optionaly be changed by providing the control name.
 import { MAT_DATEPICKER_TIME_CONTROL_NAME } from "mat-datepicker-time-header";
 
 providers: [
-  { provide: MAT_DATEPICKER_TIME_CONTROL_NAME, useValue: "event_time" }
+  { provide: MAT_DATEPICKER_TIME_CONTROL_NAME, useValue: "event_time" },
   // now it will attach to "event_time" instead
 ];
 ```
 
 ## Current Limitations
-* No support for template driven forms
-* Date range picker not supported yet (no place in the header).
+
+- No support for template driven forms
+- Date range picker not supported yet (no place in the header).
 
 Pull requests welcome
-

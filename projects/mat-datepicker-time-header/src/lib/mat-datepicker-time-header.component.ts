@@ -46,8 +46,9 @@ export class MatDatepickerTimeHeaderComponent<D, S> {
   }
 
   private disableAutoClose() {
-    ; (this.matDatepickerContent as any).disableAutoClose = true;
-    MatDatepickerContent.prototype._handleUserSelection = _handleUserSelection;
+    //; (this.matDatepickerContent as any).disableAutoClose = true;
+    //MatDatepickerContent.prototype._handleUserSelection = _handleUserSelection;
+    this.matDatepickerContent._handleUserSelection=_handleUserSelection;
   }
 
 }
