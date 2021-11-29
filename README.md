@@ -5,7 +5,7 @@
 ### Install
 
 ```
-npm i ngx-file-drag-drop
+npm i mat-datepicker-time-header
 ```
 
 ### Usage
